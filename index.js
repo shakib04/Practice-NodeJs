@@ -14,7 +14,6 @@ app.createServer = () => {
   const server = http.createServer();
   server.listen(app.config.port, () => {
     console.log(`listening to port ${app.config.port}`);
-    console.log(app.handleReqRes);
   });
 };
 
