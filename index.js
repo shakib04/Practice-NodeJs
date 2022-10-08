@@ -3,6 +3,7 @@
 console.log(`Hello, Node.js v${process.versions.node}!`);
 
 const http = require('http');
+const url = require('url');
 
 const app = {};
 
@@ -11,18 +12,19 @@ app.config = {
 };
 
 app.createServer = () => {
-  const server = http.createServer();
+  const server = http.createServer(app.handleReqRes);
   server.listen(app.config.port, () => {
     console.log(`listening to port ${app.config.port}`);
   });
 };
 
 app.handleReqRes = (req, res) => {
-  console.log('incoming request');
   const parsedUrl = url.parse(req.url, true);
-  console.log(req);
-  console.log(parsedUrl);
-  res.end('Hello World');
+  //console.log(req);
+  console.log(parsedUrl.pathname);
+  console.log(req.method);
+  res.end('Hello World after save');
+  //req.end(req.toString());
 };
 
 app.createServer();
