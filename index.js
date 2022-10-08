@@ -23,8 +23,11 @@ app.handleReqRes = (req, res) => {
   //console.log(req);
   console.log(parsedUrl.pathname);
   console.log(req.method);
+  const queryStringObject = parsedUrl.query;
+  console.log(queryStringObject);
+  const headers = req.headers;
+  console.log(headers.referer);
   res.end('Hello World after save');
-  //req.end(req.toString());
 };
 
 app.createServer();
